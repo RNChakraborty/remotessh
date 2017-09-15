@@ -1,0 +1,33 @@
+[counters]
+numberOfHosts=4
+
+[ip]
+ip1="host1.yourfavbeer.com:22"
+ip2="host2.yourfavbeer.com:22"
+ip3="host3.yourfavbeer.com:22"
+ip4="host4.yourfavbeer.com:22"
+
+[usernames]
+user1="ubuntu"
+user2="ubuntu"
+user3="ubuntu"
+user4="ubuntu"
+
+[keyfiles]
+key1="your/path/to/key/id_rsa1"
+key2="your/path/to/key/id_rsa1"
+key3="your/path/to/key/id_rsa1"
+key4="your/path/to/key/id_rsa1"
+
+[all_commands]
+c1="ls -ltr"
+c2="touch testwork/test.txt"
+c3="echo 'success' >> testwork/test.txt"
+c4="bash stop.sh"
+c5="mkdir bhua"
+
+[server_commands]
+s1="c1"
+s2="c2;c3"
+s3="c1;c2;c3"
+s4="c1;c2;c3;c4;c5"
