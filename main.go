@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"strconv"
 	"strings"
 	"sync"
@@ -85,20 +84,20 @@ func executeCommands(s *Server, wg *sync.WaitGroup) {
 
 	client, err := ssh.Dial("tcp", s.hostIp, config)
 	if err != nil {
-		log.Fatal("Error in Dialing: ", err)
+		panic("Error in Dialing: " + err.Error())
 	}
 	//Can interact with multiple sessions for each command
 	for k := 0; k < len(s.commands); k++ {
 
 		session, err := client.NewSession()
 		if err != nil {
-			log.Fatal("Failed to create session: ", err)
+			panic("Failed to create session: " + err.Error())
 		}
 		defer session.Close()
 		var b bytes.Buffer
 		session.Stdout = &b
 		if err := session.Run(s.commands[k].command); err != nil {
-			log.Fatal("Failed to run: " + err.Error())
+			panic("Failed to run: " + err.Error())
 		}
 		fmt.Println("Server: ", s.hostIp, ", Command: ", s.commands[k].command, " output: ", b.String())
 	}
